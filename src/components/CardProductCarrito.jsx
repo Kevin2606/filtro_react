@@ -1,10 +1,17 @@
+import { useCarrito } from "../states/CarritoState";
 export const CardProductCarrito = ({
+    _id,
     nombre,
     imagen,
     precio,
     descuento,
     cantidad,
 }) => {
+    const { removeCarrito } = useCarrito();
+    const eliminarProducto = (_id) => {
+        removeCarrito(_id);
+    };
+
     return (
         <div className="flex flex-row items-center w-full justify-around flex-nowrap gap-1 border-3 p-1">
             <div className="border w-14">
@@ -18,6 +25,7 @@ export const CardProductCarrito = ({
                 <p className="font-semibold w-fit">$ {precio * cantidad}</p>
                 <p className="w-fit">Descuento: {descuento}</p>
             </div>
+            <span onClick={() => eliminarProducto(_id)} className="cursor-pointer">x</span>
         </div>
     );
 };

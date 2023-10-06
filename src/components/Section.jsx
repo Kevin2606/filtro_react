@@ -10,18 +10,18 @@ export default function Section() {
 
     useEffect(() => {
         //if (!categoria) return; Que haga fecth y devuelva la categoria 1
-        getAll(categoria).then((res) => {
+        getAll(categoria || 'Zapatos').then((res) => {
             setJson(res.data);
         });
     }, [categoria]);
 
     return (
         <>
-            <section className="flex flex-col items-center">
+            <section className="flex flex-col items-center ">
                 <div className="flex flex-row justify-center items-center w-full">
                     <div className="flex-1 flex justify-center">
                         <h1 className="w-fit text-center border-2 text-2xl p-2 rounded-lg">
-                            {categoria ? categoria : "Categoria 1"}
+                            {categoria ? categoria : "Zapatos"}
                         </h1>
                     </div>
                     <div>

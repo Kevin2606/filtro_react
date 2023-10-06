@@ -9,16 +9,25 @@ import {
 } from "@nextui-org/react";
 import { useCarrito } from "../states/CarritoState";
 import { CardProductCarrito } from "./CardProductCarrito";
+import { postCompra } from "../storage/producto";
 
 export function Carrito() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const { carrito } = useCarrito();
+    const { carrito, clearCarrito } = useCarrito();
     const getTotalCarrito = () => {
         let total = 0;
         carrito.forEach((producto) => {
             total += producto.precio * producto.cantidad;
         });
         return total;
+    };
+
+    const pagar = async () => {
+        const { data } = await postCompra(carrito);
+        clearCarrito();
+        alert(`Gracias por su compra
+        ID Compra: ${data.insertedId}
+        `);
     };
 
     return (
@@ -39,7 +48,10 @@ export function Carrito() {
                             <ModalBody>
                                 <div className="flex flex-col items-center gap-2">
                                     {carrito.length === 0 ? (
-                                        <p>No hay productos en el carrito, <strong>¡Compra ahora!</strong></p>
+                                        <p>
+                                            No hay productos en el carrito,{" "}
+                                            <strong>¡Compra ahora!</strong>
+                                        </p>
                                     ) : (
                                         carrito.map((producto, index) => (
                                             <CardProductCarrito
@@ -61,7 +73,12 @@ export function Carrito() {
                                             color="warning"
                                             variant="solid"
                                             onPress={onClose}
-                                            isDisabled={(carrito.length === 0) ? true : false}
+                                            isDisabled={
+                                                carrito.length === 0
+                                                    ? true
+                                                    : false
+                                            }
+                                            onClick={pagar}
                                         >
                                             Pagar
                                         </Button>

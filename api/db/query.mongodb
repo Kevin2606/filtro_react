@@ -445,3 +445,5 @@ db.categoria.insertMany([
         nombre: "Gorras",
     },
 ]);
+
+db.compras.insertMany([]);

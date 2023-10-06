@@ -23,7 +23,7 @@ export default function Header({ children }) {
 
     return (
         <>
-            <Navbar onMenuOpenChange={setIsMenuOpen}>
+            <Navbar onMenuOpenChange={setIsMenuOpen} classNames={{base: "bg-[red]"}}>
                 <NavbarContent>
                     <NavbarMenuToggle
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}

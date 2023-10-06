@@ -9,3 +9,14 @@ export const getAllCategoria = async() =>{
     let res = await (await fetch(`${uri}/categoria`)).json();
     return res;
 }
+
+export const postCompra = async(data) =>{
+    let res = await (await fetch(`${uri}/compra`,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })).json();
+    return res;
+}

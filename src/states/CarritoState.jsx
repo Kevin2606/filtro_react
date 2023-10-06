@@ -12,9 +12,9 @@ export const useCarrito = create((set) => ({
             carrito[index].cantidad += producto.cantidad;
             return { carrito };
         }),
-    removeCarrito: (producto) =>
+    removeCarrito: (_id) =>
         set((state) => ({
-            carrito: state.carrito.filter((item) => item.id !== producto.id),
+            carrito: state.carrito.filter((item) => item._id !== _id),
         })),
     clearCarrito: () => set(() => ({ carrito: [] })),
 }));
