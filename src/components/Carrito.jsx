@@ -30,7 +30,7 @@ export function Carrito() {
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 placement="center"
-                scrollBehavior  = "inside"
+                scrollBehavior="inside"
             >
                 <ModalContent>
                     {(onClose) => (
@@ -38,12 +38,16 @@ export function Carrito() {
                             <ModalHeader>Detalles</ModalHeader>
                             <ModalBody>
                                 <div className="flex flex-col items-center gap-2">
-                                    {carrito.map((producto, index) => (
-                                        <CardProductCarrito
-                                            key={index}
-                                            {...producto}
-                                        />
-                                    ))}
+                                    {carrito.length === 0 ? (
+                                        <p>No hay productos en el carrito, <strong>¡Compra ahora!</strong></p>
+                                    ) : (
+                                        carrito.map((producto, index) => (
+                                            <CardProductCarrito
+                                                key={index}
+                                                {...producto}
+                                            />
+                                        ))
+                                    )}
                                 </div>
                             </ModalBody>
                             <ModalFooter>
@@ -53,13 +57,14 @@ export function Carrito() {
                                         <p>$ {getTotalCarrito()}</p>
                                     </div>
                                     <div className="flex justify-end">
-                                    <Button
-                                        color="warning"
-                                        variant="solid"
-                                        onPress={onClose}
-                                    >
-                                        Pagar
-                                    </Button>
+                                        <Button
+                                            color="warning"
+                                            variant="solid"
+                                            onPress={onClose}
+                                            isDisabled={(carrito.length === 0) ? true : false}
+                                        >
+                                            Pagar
+                                        </Button>
                                     </div>
                                 </div>
                             </ModalFooter>
