@@ -7,7 +7,6 @@ import { Carrito } from "./Carrito";
 export default function Section() {
     //const { categoria } = useParams();
     const [json, setJson] = useState([]);
-    console.log(json);
 
     useEffect(() => {
         //if (!categoria) return; Que haga fecth y devuelva la categoria 1
@@ -22,7 +21,7 @@ export default function Section() {
                 <div className="flex flex-row justify-center items-center w-full">
                     <div className="flex-1 flex justify-center">
                         <h1 className="w-fit text-center border-2 text-2xl p-2 rounded-lg">
-                            Producto 1
+                            Seccion 1
                         </h1>
                     </div>
                     <div>
