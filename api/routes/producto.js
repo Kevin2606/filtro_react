@@ -7,7 +7,7 @@ const version = routesVersioning();
 const appProducto = Router();
 // accept-version
 
-appProducto.get("/", limitGetProducto(), version({
+appProducto.get("/:categoria", limitGetProducto(), version({
     "1.0.0": getProductoV1,
 }));
 appProducto.post("/", limitPostProducto(), version({
