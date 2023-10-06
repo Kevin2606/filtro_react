@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useCarrito } from "../states/CarritoState";
 export function ModalObtener({
+    _id,
     nombre,
     imagen,
     descripcion,
@@ -23,11 +24,12 @@ export function ModalObtener({
     const { addCarrito } = useCarrito();
     const agregarAlCarrito = () => {
         const producto = {
+            _id,
             nombre,
             imagen,
             precio,
             descuento,
-            cantidad,
+            cantidad: parseInt(cantidad),
         };
         addCarrito(producto);
     };

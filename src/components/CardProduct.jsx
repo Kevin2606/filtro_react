@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { ModalObtener } from "./ModalObtener";
 export const CardProduct = ({
+    _id,
     nombre,
     imagen,
     descripcion,
@@ -8,7 +9,7 @@ export const CardProduct = ({
     descuento,
     valoracion
 }) => {
-    const propsModal = { nombre, imagen:imagen[0], descripcion, precio, descuento, valoracion };
+    const propsModal = {_id, nombre, imagen:imagen[0], descripcion, precio, descuento, valoracion };
     return (
         <div className="border flex flex-col items-center m-2 p-2 gap-2 lg:flex-row">
             <div className="flex flex-row gap-2">
@@ -44,7 +45,6 @@ export const CardProduct = ({
                     <strong>$ {precio}</strong> - Descuento: $ {descuento}
                 </p>
                 <div>
-                    {/*  <button className="bg-[#d39435] p-2 rounded-lg text-white">Obtener</button> */}
                     <ModalObtener {...propsModal}/>
                 </div>
             </div>
