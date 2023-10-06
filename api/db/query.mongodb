@@ -446,4 +446,4 @@ db.categoria.insertMany([
     },
 ]);
 
-db.compras.insertMany([]);
+//db.compras.insertMany([]);
